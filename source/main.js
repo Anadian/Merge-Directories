@@ -11,7 +11,7 @@ const CommandLineUsage = require('command-line-usage');
 
 const SHA256 = Cryptography.createHash('sha256');
 
-function Directory_Information( directory, recurse ){
+function Directory_Information( directory, symlink, recurse ){
 	var _return = [1, null];
 	var directory_stats = null;
 	var readdir_return = null;
