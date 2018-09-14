@@ -4,7 +4,21 @@
 * @file directory_information.js
 * @brief Gets exhaustive directory information in JSON format.
 * @author Anadian
-* @copyright MITlicensetm(2018,Canosw)
+* @copyright 	Copyright 2018 Canosw
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this 
+software and associated documentation files (the "Software"), to deal in the Software 
+without restriction, including without limitation the rights to use, copy, modify, 
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
+permit persons to whom the Software is furnished to do so, subject to the following 
+conditions:
+	The above copyright notice and this permission notice shall be included in all copies 
+or substantial portions of the Software.
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 //Dependencies
@@ -87,16 +101,19 @@ function Directory_Information( directory, symlink, recurse ){
 					try{
 						file_information_object.read = FileSystem.accessSync( file_information_object.path, FileSystem.constants.R_OK );
 					} catch(error){
+						Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',error);
 						file_information_object.read = null;
 					}
 					try{
 						file_information_object.write = FileSystem.accessSync( file_information_object.path, FileSystem.constants.W_OK );
 					} catch(error){
+						Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',error);
 						file_information_object.write = null;
 					}
 					try{
 						file_information_object.execute = FileSystem.accessSync( file_information_object.path, FileSystem.constants.X_OK );
 					} catch(error){
+						Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',error);
 						file_information_object.execute = null;
 					}
 					if( symlink === true ){
@@ -178,6 +195,6 @@ if(require.main === module){
 		}
 	}	
 } else{
-	
+	exports.Directory_Information = Directory_Information;
 }
 
